@@ -15,7 +15,7 @@ const Stopwatch = () => {
       const startTime = Date.now() - time;
       timerRef.current = setInterval(() => {
         setTime(Date.now() - startTime);
-      }, 10);
+      }, 10); 
     }
   };
 
@@ -26,10 +26,11 @@ const Stopwatch = () => {
   };
 
   const formatTime = (time) => {
-    const milliseconds = Math.floor((time % 1000) / 10);
     const seconds = Math.floor((time / 1000) % 60);
+    const minutes = Math.floor((time / (1000 * 60)) % 60);
+    const hours = Math.floor((time / (1000 * 60 * 60)) % 24);
 
-    return `Time: ${seconds.toString().padStart(1, '0')}.${milliseconds.toString().padStart(2, '0')}`;
+    return `Time: ${minutes.toString().padStart(1, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
   return (
